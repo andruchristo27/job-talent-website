@@ -1,17 +1,18 @@
-import React from "react";
-import Sidebar1 from "../../components/Sidebar";
+import React, { useState } from "react";
+import Sidebar from "../../components/Sidebar";
 import Navbar from "../../components/Navbar";
+import Desktop from "./main.desktop";
 
 export default function PesanPage() {
+    const [sidebarOpen, setSidebarOpen] = useState(false);
     return (
         <>
-            <div className="flex w-full items-start justify-center bg-white-A700">
-                <Sidebar1 />
-                <div className="flex-1">
-                    <Navbar />
-                    <div className="flex flex-col gap-[22px] p-8 md:flex-col sm:p-5">
-                        main konten pesan
-                        <div className="flex flex-1 flex-col gap-6 md:self-stretch"></div>
+            <div className="flex h-screen overflow-hidden">
+                <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+                <div className="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
+                    <Navbar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+                    <div className="">
+                        <Desktop />
                     </div>
                 </div>
             </div>
